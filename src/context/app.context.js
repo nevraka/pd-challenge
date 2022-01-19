@@ -2,16 +2,17 @@ import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../config';
 
-const AppContext = createContext();
+const AppContext = createContext('');
 
 const AppProviderWrapper = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [variant, setVariant] = useState(null);
 
   useEffect(() => {
+    // const savedCart = localStorage.getItem('cart') ?? [];
+
     const getProductData = async () => {
       setLoading(true);
       setError(false);
@@ -35,8 +36,6 @@ const AppProviderWrapper = ({ children }) => {
         setCart,
         loading,
         error,
-        variant,
-        setVariant,
       }}
     >
       {children}
