@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from 'react';
+import { AppContext } from './context/app.context';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import NotFound from './components/NotFound';
+import ProductList from './pages/ProductList';
+import Cart from './pages/Cart';
+import ProductDetails from './pages/ProductDetails';
 
-function App() {
+const App = () => {
+  const { cart, setCart } = useContext(AppContext);
+
+  const navigate = useNavigate();
+
+  const handleAddToCart = (product, variant) => {
+    const foundItem = cart.find(
+      (item) => item.productId === product.id && item.variantId === variant.id
+    );
+    if (foundItem) {
+      foundItem.quantity++;
+      setCart([...cart]);
+    } else {
+      setCart([
+        ...cart,
+        {
+          productId: product.id,
+          title: product.metadata.accentuate.mainTitle,
+          quantity: 1,
+          variantId: variant.id,
+          type: variant.title,
+          price: variant.priceV2.amount,
+          currency: variant.priceV2.currencyCode,
+          image: variant.image.src,
+        },
+      ]);
+    }
+    navigate('/cart');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      {/* TODO move all components in route into src/pages folder */}
+
+      <Route path="*" element={<NotFound />} />
+      <Route
+        path="/"
+        element={<ProductList handleAddToCart={handleAddToCart} />}
+      />
+      <Route
+        pathname="product"
+        path="/products/:productId"
+        element={<ProductDetails handleAddToCart={handleAddToCart} />}
+      />
+      <Route path="/cart" element={<Cart />} />
+    </Routes>
   );
-}
+};
 
 export default App;
