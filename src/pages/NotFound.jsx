@@ -7,7 +7,6 @@ const NotFound = () => {
       <div>
         <h1 className="text-2xl font-medium">Page not found!</h1>
       </div>
-      {/* TODO import image directly */}
       <img src={notfound} alt="404" className="w-96 pt-24"></img>
       <Link to={'/'}>
         <div className="py-8 text-l font-medium underline">Home Page</div>

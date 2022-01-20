@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { AppContext } from './context/app.context';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import NotFound from './components/NotFound';
+import NotFound from './pages/NotFound';
 import ProductList from './pages/ProductList';
 import Cart from './pages/Cart';
 import ProductDetails from './pages/ProductDetails';
@@ -38,8 +38,6 @@ const App = () => {
 
   return (
     <Routes>
-      {/* TODO move all components in route into src/pages folder */}
-
       <Route path="*" element={<NotFound />} />
       <Route
         path="/"

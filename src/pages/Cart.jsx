@@ -9,10 +9,14 @@ const Cart = () => {
     return acc + item.quantity * item.price;
   }, 0);
 
+  const formattedTotal = total.toFixed(2).toString();
+
   return (
     <>
       <BreadCrumbs pageName="Cart" />
-      <h1 className="text-center m-5 md:mt-12 mb-4 text-5xl">Your Cart</h1>
+      <h1 className="text-center m-5 md:mt-12 mb-4 text-xl md:text-3xl">
+        Your Cart
+      </h1>
       <div className="flex flex-wrap justify-center">
         <div className="w-full bg-white rounded-lg shadow-md dark:bg-white dark:border-gray-700 flex flex-col m-8 overflow-hidden ">
           <div className="w-full md:text-m md:mt-12 mb-4 px-6">
@@ -51,10 +55,7 @@ const Cart = () => {
             })}
           </div>
         </div>
-        {/* TODO move below message to a variable above */}
-        <div className="font-bold text-2xl ml-auto px-6">{`Total Payment: EUR ${total
-          .toFixed(2)
-          .toString()}`}</div>
+        <div className="font-bold text-xl md:text-2xl ml-auto px-8">{`Total Payment: EUR ${formattedTotal}`}</div>
       </div>
     </>
   );

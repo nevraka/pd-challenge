@@ -18,24 +18,23 @@ const ProductDetails = ({ handleAddToCart }) => {
   const product = products.find((el) => el.id.toString() === productId);
 
   if (!product) {
-    // TODO Error message
-    return <Error />;
+    return <Error message="Product not found!" />;
   }
 
   return (
     <>
       <BreadCrumbs pageName="Product Details" />
       <div className="flex flex-wrap justify-center">
-        <div className=" w-full bg-white rounded-lg shadow-md dark:bg-white dark:border-gray-700 flex flex-col m-5 overflow-hidden ">
-          <div className="font-bold text-xl text-center m-5 md:text-3xl md:mt-12 mb-4">
+        <div className="grid grid-cols-2 w-full bg-white rounded-lg shadow-md dark:bg-white dark:border-gray-700 m-5 overflow-hidden ">
+          <div className="col-span-2 font-bold text-xl text-center m-5 md:text-3xl md:mt-12 mb-4">
             {product.title}
           </div>
-          <div className="px-3 py-1">
-            <div className=" text-sm text-center mt-5 md:text-2xl ">
-              {product.metadata.accentuate.subTitle}
+          <div className="col-span-2 md:col-span-1">
+            <div className="px-3 py-1">
+              <div className="text-sm text-center mt-5 md:text-xl ">
+                {product.metadata.accentuate.subTitle}
+              </div>
             </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-2">
             <div className="flex justify-center">
               <img
                 className="object-cover rounded-t-lg md:w-30 md:rounded-none md:rounded-l-lg"
@@ -49,7 +48,9 @@ const ProductDetails = ({ handleAddToCart }) => {
                 width="300px"
               ></img>
             </div>
-            <div className="flex flex-row pl-6 pb-2 justify-center">
+          </div>
+          <div className="col-span-2 md:col-span-1">
+            <div className="flex flex-row px-2 py-8 justify-center ">
               <VariantDropdown
                 product={product}
                 variant={variant}

@@ -8,17 +8,16 @@ const AppProviderWrapper = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getProductData = async () => {
       setLoading(true);
-      setError(false);
       try {
         let response = await axios.get(`${API_URL}`);
         setProducts(response.data.products);
       } catch (err) {
-        setError(true);
+        setError(err);
       }
       setLoading(false);
     };

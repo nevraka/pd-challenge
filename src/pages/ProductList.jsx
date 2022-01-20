@@ -19,7 +19,7 @@ const ProductList = ({ handleAddToCart }) => {
   return (
     <>
       <BreadCrumbs pageName="Products" />
-      <div className="p-4 flex flex-wrap justify-center">
+      <h2 className="p-4 flex flex-wrap justify-center">
         {products.map((product, i) => (
           <ProductListItem
             product={product}
@@ -27,7 +27,7 @@ const ProductList = ({ handleAddToCart }) => {
             key={i}
           />
         ))}
-      </div>
+      </h2>
     </>
   );
 };

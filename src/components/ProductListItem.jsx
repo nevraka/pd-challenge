@@ -1,4 +1,4 @@
-import { LinkButton } from './Button';
+import { LinkButton, Button } from './Button';
 import { useState } from 'react';
 
 const ProductListItem = ({ product, handleAddToCart }) => {
@@ -20,13 +20,13 @@ const ProductListItem = ({ product, handleAddToCart }) => {
         }}
       />
       <div className="px-6 py-4">
-        <p className="font-bold text-l flex justify-center">
+        <h1 id="mainTitle" className="font-bold text-l flex justify-center">
           {product.metadata.accentuate.mainTitle}
-        </p>
+        </h1>
       </div>
-      <div className="text-gray-700 text-center mb-2">
+      <p id="ribbonText" className="text-gray-700 text-center mb-2">
         {product.metadata.accentuate.ribbonText1}
-      </div>
+      </p>
       <div className="w-full text-center py-2 px-16">
         {product.variants.map((vr, i) => (
           <div className="form-control flex flex-row" key={i}>
@@ -34,25 +34,21 @@ const ProductListItem = ({ product, handleAddToCart }) => {
               <input
                 type="radio"
                 name="opt"
+                disabled={!vr.availableForSale}
                 checked={variant && variant.id === vr.id}
                 className="radio cursor-pointer"
                 value={vr.id}
                 onChange={() => setVariant(vr)}
               />
             </label>
-            <span className="label-text pl-2">{vr.title}</span>
+            <span className="variant label-text pl-2">{vr.title}</span>
           </div>
         ))}
       </div>
       <div className="absolute w-full bottom-6 flex space-x-4 justify-center">
-        <LinkButton
-          text="View Details"
-          link={`/products/${product.id}`}
-          onClick={() => handleAddToCart(product, variant)}
-        />
-        <LinkButton
+        <LinkButton text="View Details" link={`/products/${product.id}`} />
+        <Button
           text="Add to Cart"
-          link={'/cart'}
           disabled={!variant}
           onClick={() => handleAddToCart(product, variant)}
         />

@@ -17,3 +17,8 @@ code {
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}

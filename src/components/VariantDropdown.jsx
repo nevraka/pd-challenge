@@ -17,12 +17,15 @@ const VariantDropdown = ({ product, variant, onSelect }) => {
       </button>
       <ul className="dropdown-menu absolute min-w-max hidden bg-white text-base py-2 list-none text-left rounded-lg shadow-lg cursor-pointer m-0 border-none">
         {product.variants.map((vr) => {
+          let classNames =
+            'dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100';
+          if (!vr.availableForSale) {
+            classNames += ' disabled';
+          }
+
           return (
             <div>
-              <li
-                className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700  hover:bg-gray-100 "
-                onClick={() => onSelect(vr)}
-              >
+              <li className={classNames} onClick={() => onSelect(vr)}>
                 {vr.title} - {Number(vr.priceV2.amount)}
                 {vr.priceV2.currencyCode}
               </li>
