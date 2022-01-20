@@ -1,14 +1,12 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const BreadCrumbs = () => {
-  const { pathname } = useLocation();
-
+const BreadCrumbs = ({ pageName }) => {
   return (
-    <div className=" text-gray-500  w-full px-20 pt-20">
+    <div className=" text-gray-500  w-full px-10 pt-10">
       <Link className="hover:underline mr-2" to={'/'}>
         Home
       </Link>
-      {pathname !== '/' && <span>{pathname}</span>}
+      {pageName && <span>{`/ ${pageName}`}</span>}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import notfound from './notfound.png';
 
 const NotFound = () => {
   return (
-    <div className="flex flex-col items-center mt-24">
+    <div className="flex flex-col items-center mt-18">
       <div>
         <h1 className="text-2xl font-medium">Page not found!</h1>
       </div>

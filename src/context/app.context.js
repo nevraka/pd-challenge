@@ -11,8 +11,6 @@ const AppProviderWrapper = ({ children }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    // const savedCart = localStorage.getItem('cart') ?? [];
-
     const getProductData = async () => {
       setLoading(true);
       setError(false);

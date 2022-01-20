@@ -1,0 +1,63 @@
+import { useContext } from 'react';
+import { AppContext } from '../context/app.context';
+import BreadCrumbs from '../components/BreadCrumbs';
+
+const Cart = () => {
+  const { cart } = useContext(AppContext);
+
+  const total = cart.reduce((acc, item) => {
+    return acc + item.quantity * item.price;
+  }, 0);
+
+  return (
+    <>
+      <BreadCrumbs pageName="Cart" />
+      <h1 className="text-center m-5 md:mt-12 mb-4 text-5xl">Your Cart</h1>
+      <div className="flex flex-wrap justify-center">
+        <div className="w-full bg-white rounded-lg shadow-md dark:bg-white dark:border-gray-700 flex flex-col m-8 overflow-hidden ">
+          <div className="w-full md:text-m md:mt-12 mb-4 px-6">
+            <div className="w-full flex font-medium text-lg">
+              <div className="w-4/6">Description</div>
+              <div className="w-1/6 text-center">Quantity</div>
+              <div className="w-1/6 text-center">Price</div>
+            </div>
+            {cart.map((item) => {
+              return (
+                <div className="flex w-full flex-row py-4">
+                  <div className="w-4/6">
+                    <div className="flex items-center">
+                      <img
+                        className="self-center mr-4"
+                        src={item.image}
+                        alt="key"
+                        onError={({ currentTarget }) => {
+                          currentTarget.onerror = null;
+                          currentTarget.src =
+                            'https://cdn.shopify.com/s/files/1/2509/4858/products/PetsDeli_TroFu_Hund-Sensitiv-2.jpg?v=1552633118';
+                        }}
+                        height="30px"
+                        width="50px"
+                      />
+                      {item.title} / {item.type}
+                    </div>
+                  </div>
+                  <div className="w-1/6 text-center">{item.quantity}</div>
+                  <div className="w-1/6 text-center">
+                    {item.price * item.quantity.toFixed(2).toString()} &nbsp;
+                    {item.currency}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        {/* TODO move below message to a variable above */}
+        <div className="font-bold text-2xl ml-auto px-6">{`Total Payment: EUR ${total
+          .toFixed(2)
+          .toString()}`}</div>
+      </div>
+    </>
+  );
+};
+
+export default Cart;

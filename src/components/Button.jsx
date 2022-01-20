@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export const LinkButton = ({ link = undefined, ...args }) => (
+export const LinkButton = ({ link, ...args }) => (
   <Link to={link}>
     <Button {...args} />
   </Link>
