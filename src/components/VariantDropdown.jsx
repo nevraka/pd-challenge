@@ -18,9 +18,9 @@ const VariantDropdown = ({ product, variant, onSelect }) => {
         </svg>
       </button>
       <ul className="dropdown-menu absolute min-w-max hidden bg-white text-base py-2 list-none text-left rounded-lg shadow-lg cursor-pointer m-0 border-none">
-        {product.variants.map((vr) => {
+        {product.variants.map((vr, i) => {
           return (
-            <div>
+            <div key={i}>
               <li
                 className={cx(
                   'dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100',

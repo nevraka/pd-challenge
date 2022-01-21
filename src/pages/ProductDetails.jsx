@@ -28,22 +28,20 @@ const ProductDetails = ({ handleAddToCart }) => {
       <BreadCrumbs pageName="Product Details" />
       <div className="flex flex-wrap justify-center">
         <div className="grid grid-cols-2 w-full bg-white rounded-lg shadow-md dark:bg-white dark:border-gray-700 m-5 overflow-hidden ">
-          <div className="col-span-2 font-bold text-xl text-center m-5 md:text-3xl md:mt-12 mb-4">
+          <h1 className="col-span-2 font-bold text-xl text-center m-5 md:text-3xl md:mt-12 mb-4">
             {product.title}
-          </div>
+          </h1>
           <div className="col-span-2 md:col-span-1">
-            <div className="px-3 py-1">
-              <div className="text-sm text-center mt-5 md:text-xl ">
-                {product.metadata.accentuate.subTitle}
-              </div>
-            </div>
+            <h2 className="px-3 py-1 text-sm text-center mt-5 md:text-xl ">
+              {product.metadata.accentuate.subTitle}
+            </h2>
             <div className="flex justify-center">
               <img
                 className="object-cover rounded-t-lg md:w-30 md:rounded-none md:rounded-l-lg"
                 src={product.image.src}
                 alt={product.image.alt}
                 onError={({ currentTarget }) => {
-                  currentTarget.onerror = null; // prevents looping
+                  currentTarget.onerror = null;
                   currentTarget.src =
                     'https://cdn.shopify.com/s/files/1/2509/4858/products/PetsDeli_TroFu_Hund-Sensitiv-2.jpg?v=1552633118';
                 }}
@@ -72,17 +70,16 @@ const ProductDetails = ({ handleAddToCart }) => {
                 />
               </div>
             </div>
-            <div className="flex flex-col justify-between p-4 leading-normal">
-              <div className="px-6 pt-4 pb-2">
-                <ul>
-                  {product.tags.map((tag) => (
-                    <li className="text-xs font-semibold inline-block py-1 px-2 rounded text-amber-600 bg-amber-200 last:mr-0 mr-1 ">
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            <ul className="px-6 py-8">
+              {product.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="text-xs font-semibold inline-block py-1 px-2 rounded text-amber-600 bg-amber-200 last:mr-0 mr-1 mb-1"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

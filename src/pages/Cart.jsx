@@ -35,9 +35,9 @@ const Cart = () => {
               <div className="w-1/6 text-center">Quantity</div>
               <div className="w-1/6 text-center">Price</div>
             </div>
-            {cart.map((item) => {
+            {cart.map((item, i) => {
               return (
-                <div className="flex w-full flex-row py-4">
+                <div key={i} className="flex w-full flex-row py-4">
                   <div className="w-4/6">
                     <div className="flex items-center ">
                       <img

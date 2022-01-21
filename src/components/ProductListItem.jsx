@@ -10,21 +10,21 @@ const ProductListItem = ({ product, handleAddToCart }) => {
       className="relative max-w-sm overflow-hidden p-3"
       key={product.metadata.petsdeli.uid}
     >
-      <div className="flex flex-col rounded overflow-hidden shadow-lg h-full">
+      <div className="flex flex-col rounded shadow-lg h-full">
         <img
           className="w-full"
           src={product.image.src}
           alt={product.image.alt}
           onError={({ currentTarget }) => {
-            currentTarget.onerror = null; // prevents looping
+            currentTarget.onerror = null;
             currentTarget.src =
               'https://cdn.shopify.com/s/files/1/2509/4858/products/PetsDeli_TroFu_Hund-Sensitiv-2.jpg?v=1552633118';
           }}
         />
         <div className="px-6 py-4">
-          <h1 id="mainTitle" className="font-bold text-l flex justify-center">
+          <h2 id="mainTitle" className="font-bold text-l flex justify-center">
             {product.metadata.accentuate.mainTitle}
-          </h1>
+          </h2>
           <p id="ribbonText" className="text-gray-700 text-center p-2">
             {product.metadata.accentuate.ribbonText1}
           </p>
@@ -37,7 +37,7 @@ const ProductListItem = ({ product, handleAddToCart }) => {
                   type="radio"
                   name={'opt' + product.metadata.petsdeli.uid}
                   disabled={!vr.availableForSale}
-                  checked={variant && variant.id === vr.id}
+                  checked={variant ? variant.id === vr.id : false}
                   className="radio cursor-pointer"
                   value={vr.id}
                   onChange={() => setVariant(vr)}
