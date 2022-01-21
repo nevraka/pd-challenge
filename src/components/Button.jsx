@@ -6,12 +6,8 @@ export const LinkButton = ({ link, ...args }) => (
   </Link>
 );
 
-export const Button = ({ onClick, text, disabled }) => (
-  <button
-    disabled={disabled}
-    className="bg-[#1a335b] hover:bg-blue-900  text-white font-bold py-2 px-4 rounded-md"
-    onClick={onClick}
-  >
+export const Button = ({ onClick, text, disabled, className }) => (
+  <button disabled={disabled} className={className} onClick={onClick}>
     {text}
   </button>
 );

@@ -6,14 +6,14 @@ import BreadCrumbs from '../components/BreadCrumbs';
 import Error from '../components/Error';
 
 const ProductList = ({ handleAddToCart }) => {
-  const { products, loading, cart } = useContext(AppContext);
+  const { products, loading } = useContext(AppContext);
 
   if (loading) {
     return <Loading />;
   }
 
-  if (!cart) {
-    return <Error />;
+  if (!products) {
+    return <Error message="No products retrieved!" />;
   }
 
   return (

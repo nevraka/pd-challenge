@@ -1,5 +1,6 @@
 import { LinkButton, Button } from './Button';
 import { useState } from 'react';
+import cx from 'classnames';
 
 const ProductListItem = ({ product, handleAddToCart }) => {
   const [variant, setVariant] = useState(null);
@@ -33,23 +34,33 @@ const ProductListItem = ({ product, handleAddToCart }) => {
             <label className="cursor-pointer label">
               <input
                 type="radio"
-                name="opt"
+                name={'opt' + product.metadata.petsdeli.uid}
                 disabled={!vr.availableForSale}
                 checked={variant && variant.id === vr.id}
                 className="radio cursor-pointer"
                 value={vr.id}
                 onChange={() => setVariant(vr)}
               />
+              <span className="variant label-text pl-2">{vr.title}</span>
             </label>
-            <span className="variant label-text pl-2">{vr.title}</span>
           </div>
         ))}
       </div>
       <div className="absolute w-full bottom-6 flex space-x-4 justify-center">
-        <LinkButton text="View Details" link={`/products/${product.id}`} />
+        <LinkButton
+          text="View Details"
+          link={`/products/${product.id}`}
+          className="bg-[#1a335b] hover:bg-blue-900  text-white font-bold py-2 px-4 rounded-md"
+        />
         <Button
           text="Add to Cart"
           disabled={!variant}
+          className={cx(
+            'text-white font-bold py-2 px-4 rounded-md',
+            !variant
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-[#1a335b] hover:bg-blue-900'
+          )}
           onClick={() => handleAddToCart(product, variant)}
         />
       </div>

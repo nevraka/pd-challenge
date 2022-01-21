@@ -1,10 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AppContext } from '../context/app.context';
+import { Button } from '../components/Button';
 import VariantDropdown from '../components/VariantDropdown';
 import Loading from '../components/Loading';
 import BreadCrumbs from '../components/BreadCrumbs';
 import Error from '../components/Error';
+import cx from 'classnames';
 
 const ProductDetails = ({ handleAddToCart }) => {
   const { products, loading } = useContext(AppContext);
@@ -57,17 +59,17 @@ const ProductDetails = ({ handleAddToCart }) => {
                 onSelect={(vr) => setVariant(vr)}
               />
               <div className="pt-2 sm:pt-1">
-                <button
+                <Button
                   disabled={!variant}
-                  className={`text-white ${
+                  className={cx(
+                    'text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm py-2 px-4  text-center transition-all duration-500 h-10',
                     !variant
                       ? 'bg-gray-400 cursor-not-allowed'
                       : 'bg-blue-700 cursor-pointer'
-                  } hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm py-2 px-4  text-center transition-all duration-500 h-10`}
+                  )}
                   onClick={() => handleAddToCart(product, variant)}
-                >
-                  Add to Cart
-                </button>
+                  text="Add to Cart"
+                />
               </div>
             </div>
             <div className="flex flex-col justify-between p-4 leading-normal">

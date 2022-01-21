@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { AppContext } from '../context/app.context';
 import BreadCrumbs from '../components/BreadCrumbs';
+import { LinkButton } from '../components/Button';
 
 const Cart = () => {
   const { cart } = useContext(AppContext);
@@ -10,6 +11,21 @@ const Cart = () => {
   }, 0);
 
   const formattedTotal = total.toFixed(2).toString();
+
+  if (cart.length === 0) {
+    return (
+      <div>
+        <h1 className="flex justify-center mt-14 text-2xl">
+          The cart is empty!
+        </h1>
+        <LinkButton
+          className="flex justify-center"
+          link="/"
+          text="Continue shopping"
+        />
+      </div>
+    );
+  }
 
   return (
     <>
