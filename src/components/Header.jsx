@@ -8,17 +8,17 @@ const Header = () => {
   const { cart } = useContext(AppContext);
 
   return (
-    <header className="px-8 pt-4 flex flex-row items-center">
+    <header className="px-4 py-4 flex flex-row justify-between">
       <Link to={'/'}>
         <img src={petsdelisvg} alt="logo" className="flex" />
       </Link>
-      <div className="w-full text-right relative pr-8 ">
-        <Link to={'/cart'} className="absolute right-12 z-0 top-0 ">
+      <div className="relative place-self-center mr-1">
+        <Link to={'/cart'} className="z-0">
           <img src={sb} alt="bag" height="25px" width="40px" />
+          <div className="absolute -right-2 -top-2 inline-flex items-center justify-center px-2 py-1.5 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+            {cart.length}
+          </div>
         </Link>
-        <div className="absolute right-10 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
-          {cart.length}
-        </div>
       </div>
     </header>
   );

@@ -24,13 +24,13 @@ const Cart = () => {
   return (
     <>
       <BreadCrumbs pageName="Cart" />
-      <h1 className="text-center m-5 md:mt-12 mb-4 text-xl md:text-3xl">
+      <h1 className="text-center m-4 mt-5 md:mt-8 text-xl md:text-2xl">
         Your Cart
       </h1>
-      <div className="flex flex-wrap justify-center">
-        <div className="w-full bg-white rounded-lg shadow-md dark:bg-white dark:border-gray-700 flex flex-col m-8 overflow-hidden ">
-          <div className="w-full md:text-m md:mt-12 mb-4 px-6">
-            <div className="w-full flex font-medium text-lg">
+      <div className="flex flex-wrap justify-center text-xs md:text-base ">
+        <div className="w-full bg-white rounded-lg shadow-md dark:bg-white dark:border-gray-700 flex flex-col m-4 overflow-hidden ">
+          <div className="w-full md:text-base mb-4 px-3">
+            <div className="w-full flex">
               <div className="w-4/6">Description</div>
               <div className="w-1/6 text-center">Quantity</div>
               <div className="w-1/6 text-center">Price</div>
@@ -39,9 +39,9 @@ const Cart = () => {
               return (
                 <div className="flex w-full flex-row py-4">
                   <div className="w-4/6">
-                    <div className="flex items-center">
+                    <div className="flex items-center ">
                       <img
-                        className="self-center mr-4"
+                        className="self-center mr-4 "
                         src={item.image}
                         alt="key"
                         onError={({ currentTarget }) => {
@@ -65,7 +65,7 @@ const Cart = () => {
             })}
           </div>
         </div>
-        <div className="font-bold text-xl md:text-2xl ml-auto px-8">{`Total Payment: EUR ${formattedTotal}`}</div>
+        <div className="font-bold text-base md:text-lg ml-auto px-4 pb-4">{`Total Payment: EUR ${formattedTotal}`}</div>
       </div>
     </>
   );
