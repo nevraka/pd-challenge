@@ -62,10 +62,10 @@ const ProductDetails = ({ handleAddToCart }) => {
                 <Button
                   disabled={!variant}
                   className={cx(
-                    'text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm py-2 px-4  text-center transition-all duration-500 h-10',
+                    'text-white hover:bg-blue-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm py-2 px-4  text-center transition-all duration-500 h-10',
                     !variant
                       ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-blue-700 cursor-pointer'
+                      : 'bg-[#1a335b] cursor-pointer'
                   )}
                   onClick={() => handleAddToCart(product, variant)}
                   text="Add to Cart"

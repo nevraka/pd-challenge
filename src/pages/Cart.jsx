@@ -14,15 +14,9 @@ const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <div>
-        <h1 className="flex justify-center mt-14 text-2xl">
-          The cart is empty!
-        </h1>
-        <LinkButton
-          className="flex justify-center"
-          link="/"
-          text="Continue shopping"
-        />
+      <div className="flex flex-col items-center mt-14 ">
+        <h1 className="text-2xl">The cart is empty!</h1>
+        <LinkButton className="underline" link="/" text="Continue shopping" />
       </div>
     );
   }
