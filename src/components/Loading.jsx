@@ -1,7 +1,7 @@
 const Loading = () => {
   return (
-    <div className="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-purple-500">
-      <span className="visually-hidden">Loading...</span>
+    <div class=" flex justify-center items-center">
+      <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
     </div>
   );
 };
